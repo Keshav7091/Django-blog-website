@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}View Blog{% endblock title %} 
+
+{% block body %}
+
+{% load static %}
+
+<div class="card mb-3 my-5" style="max-width: 80%;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="/media/{{allBlogs.image}}" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body"> 
+          <h5 class="card-title">{{allBlogs.title}}</h5>
+          <h6 class="text-warning">Author: {{allBlogs.author}}</h6>
+          <p class="card-text">{{allBlogs.content | safe}}</p>
+          <p class="card-text"><small class="text-muted">Posted Date: {{allBlogs.posted_date}}</small></p>
+          <a href="{% url 'AllBlog' %}" class="btn btn-primary btn-sm">All Blogs</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock body %}

@@ -51,3 +51,16 @@ def write(request):
         new_blog.save()
     cat = Category.objects.all()
     return render(request, 'write.html', {'cat':cat})
+
+def AllBlog(request):
+
+    regularBlogs= Regular_Blog.objects.all()
+    context = {'regularBLOGS':regularBlogs}
+
+
+    return render(request , 'blog.html',context)
+
+def all_blogs(request,pk):
+    allBlogs = Regular_Blog.objects.get(pk=pk)
+
+    return render(request,'viewAllBlogs.html', {'allBlogs': allBlogs})
