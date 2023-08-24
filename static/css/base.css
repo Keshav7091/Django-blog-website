@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+nav{
+    height: 50px; 
+    width: 100%; 
+    background-color: rgb(72 148 240); 
+    color: white;
+}
+
+
+
+.foot {
+    color: white;
+}
+
+.info ul li a{
+    text-decoration: none;
+    color: white;
+}
+
+.copy a{
+    text-decoration: none;
+    color: white;
+}
