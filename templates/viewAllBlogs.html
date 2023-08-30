@@ -1,25 +1,43 @@
 {% extends 'base.html' %}
 
-{% block title %}View Blog{% endblock title %} 
+{% block title %}View Blog{% endblock title %}
 
 {% block body %}
 
 {% load static %}
 
-<div class="card mb-3 my-5" style="max-width: 80%;">
-    <div class="row g-0">
+
+<div class="container" style="margin-top: 100px;">
+  <div class="row">
+    <div class="col-10">
       <div class="col-md-4">
         <img src="/media/{{allBlogs.image}}" class="img-fluid rounded-start" alt="...">
       </div>
-      <div class="col-md-8">
-        <div class="card-body"> 
+      <div class="col-md-8 p-3">
+        <div class="card-body">
           <h5 class="card-title">{{allBlogs.title}}</h5>
           <h6 class="text-warning">Author: {{allBlogs.author}}</h6>
           <p class="card-text">{{allBlogs.content | safe}}</p>
           <p class="card-text"><small class="text-muted">Posted Date: {{allBlogs.posted_date}}</small></p>
-          <a href="{% url 'AllBlog' %}" class="btn btn-primary btn-sm">All Blogs</a>
         </div>
       </div>
     </div>
+    <div class="col-2">
+      {% for cat in cats %}
+  
+
+    <div class="card item">
+      <img src="/media/{{cat.image}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <b class="card-title">{{cat.title}}</b>
+        <p class="card-text">{{cat.content | safe | truncatechars:40}}</p>
+        <a href="/category/{{cat.pk}}" class="btn btn-primary btn-center">View</a>
+      </div>
+    </div>
+
+    {% endfor %}
+    </div>
+    
   </div>
+</div>
 {% endblock body %}

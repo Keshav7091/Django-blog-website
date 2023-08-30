@@ -6,12 +6,12 @@
 
 {% load static %}
 
-<div class="card mb-3 my-5" style="max-width: 80%;">
-    <div class="row g-0">
-      <div class="col-md-4">
+<div class="card mb-3" style="max-width: 80%;">
+    <div class="row g-0" style="margin: 50px;">
+      <div class="col-md-6">
         <img src="/media/{{viewBlog.image}}" class="img-fluid rounded-start" alt="...">
       </div>
-      <div class="col-md-8">
+      <div class="col-sm-6">
         <div class="card-body"> 
           <h5 class="card-title">{{viewBlog.title}}</h5>
           <h6 class="text-warning">Author: {{viewBlog.author}}</h6>

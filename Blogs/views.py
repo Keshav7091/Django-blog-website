@@ -5,7 +5,8 @@ from .models import *
 def home(request):
 
     popularBlogs= Popular_Blogs.objects.all()
-    context = {'poplarBLOGS':popularBlogs,'name':'Mr. Ram'}
+    cats = Category.objects.all()
+    context = {'poplarBLOGS':popularBlogs,'name':'Mr. Ram', 'cats': cats}
 
 
     return render(request , 'home.html',context)
@@ -13,16 +14,20 @@ def home(request):
 
 def view_blog(request,pk):
     viewBlog = Popular_Blogs.objects.get(pk=pk)
+    cats = Category.objects.all()
 
-    return render(request,'viewBlog.html', {'viewBlog': viewBlog})
+    return render(request,'viewBlog.html', {'viewBlog': viewBlog, 'cats': cats})
     
     
 def about(request):
-    return render(request , 'about.html')
+    
+    cats = Category.objects.all()
+    return render(request , 'about.html', {'cats': cats})
 
 
 def contact(request):
 
+    cats = Category.objects.all()
     if request.method == 'POST':
         cname = request.POST['fullname']
         cemail = request.POST['email']
@@ -38,29 +43,33 @@ def contact(request):
         else:
             return HttpResponse("fill invalid form")
 
-    return render(request , 'contact.html')
+    return render(request , 'contact.html', {'cats': cats})
 
-def write(request):
-    if request.method == 'POST':
-        author = request.POST['author']
-        title = request.POST['title']
-        content = request.POST['content']
-        cat_id = request.POST['cat']
-        category = Category.objects.get(id=cat_id)
-        new_blog = Regular_Blog(author_name=author, title=title, content=content, catagory=category)
-        new_blog.save()
-    cat = Category.objects.all()
-    return render(request, 'write.html', {'cat':cat})
 
 def AllBlog(request):
 
     regularBlogs= Regular_Blog.objects.all()
-    context = {'regularBLOGS':regularBlogs}
+    cats = Category.objects.all()
+
+    context = {'regularBLOGS':regularBlogs, 'cats': cats}
 
 
     return render(request , 'blog.html',context)
 
 def all_blogs(request,pk):
     allBlogs = Regular_Blog.objects.get(pk=pk)
+    cats = Category.objects.all()
 
-    return render(request,'viewAllBlogs.html', {'allBlogs': allBlogs})
+    return render(request,'viewAllBlogs.html', {'allBlogs': allBlogs, 'cats': cats})
+
+
+def category(request, pk):
+    cats = Category.objects.all()
+    cat = Category.objects.get(pk=pk)
+    posts = Regular_Blog.objects.filter(cat=cat)
+
+    return render(request, 'category.html', {'cat':cat, 'posts':posts, 'cats': cats})
+
+
+def search(request):
+    return render(request, 'search.html')

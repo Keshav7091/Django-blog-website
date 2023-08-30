@@ -4,13 +4,71 @@
 
 {% load static %}
 {% block body %}
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
 
-<div class="container ">
+<style>
+  .owl-item{
+    display: flex;
+    justify-content: center;
+  }
+
+  .item{
+    width: 15rem;
+    height: 23rem;
+}
+
+
+
+
+  .owl-nav{
+    display: flex;
+    justify-content: center;
+  }
+  
+  .owl-prev{
+    margin: 23px;
+  }
+  .owl-prev span{
+      font-size: 30px;
+  }
+  .owl-next{
+    margin: 23px;
+  }
+  .owl-next span{
+      font-size: 30px;
+  }
+
+
+
+</style>
+
+<div class="container cont-card" style="margin: 90px;">
+
+  <div class="owl-carousel">
+    {% for cat in cats %}
+  
+
+    <div class="card item">
+      <img src="/media/{{cat.image}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{cat.title}}</h5>
+        <p class="card-text">{{cat.content | safe | truncatechars:40}}</p>
+        <a href="/category/{{cat.pk}}" class="btn btn-primary btn-center">View</a>
+      </div>
+    </div>
+
+    {% endfor %}
+  </div>
+  
+</div>
+
+
+<div class="container con-card2" style="margin: 90px;">
     <h1 class="text-center">Read Out All Blogs</h1>
     
-    <div class="row row-cols-1 row-cols-md-3 g-4 px-2">
+    <div class="row row-cols-1 row-cols-md-3 g-4 px-2 my-3">
       {% for obj in regularBLOGS %}
-      <div class="card mb-3" style="max-width: 540px;">
+      <div class="card mb-3" style="max-width: 360px; margin-right: 10px;">
         <div class="row g-0">
           <div class="col-md-4">
             <img src="/media/{{obj.image}}" class="img-fluid rounded-start" alt="...">
@@ -30,6 +88,9 @@
       {% endfor %}
     </div>
   </div>
+
+  
+  
 
 {% endblock body %}
 

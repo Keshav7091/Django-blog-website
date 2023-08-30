@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Read {{cat.title}} Blogs{% endblock title %}
+
+{% block body %}
+
+<style>
+    .cat{
+        margin-top: 70px;
+    }
+</style>
+
+
+<div class="container cat">
+    <h3 style="display: flex; justify-content: center; margin: 20px; color: #376282;">{{cat.title}}</h3>
+    <div class="image">
+        <img src="/media/{{cat.image}}" class="card-img-top" style="max-height: 450px; width: 100%; object-fit: contain;" alt="">
+    </div>
+
+
+    <div class="list-group m-5" >
+        {% for obj in posts %}
+
+
+        <a href="/all_blogs/{{obj.pk}}" class="list-group-item list-group-item-action" aria-current="true">
+          {{obj.title}}
+        </a>
+
+        {% empty %}
+
+        <h3>No post in this category</h3>
+
+        {% endfor %}
+      </div>
+</div>
+
+
+{% endblock body %}
