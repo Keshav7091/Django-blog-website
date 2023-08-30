@@ -24,20 +24,20 @@
     </div>
     <div class="col-2">
       {% for cat in cats %}
-  
 
-    <div class="card item">
-      <img src="/media/{{cat.image}}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <b class="card-title">{{cat.title}}</b>
-        <p class="card-text">{{cat.content | safe | truncatechars:40}}</p>
-        <a href="/category/{{cat.pk}}" class="btn btn-primary btn-center">View</a>
+
+      <div class="card item">
+        <img src="/media/{{cat.image}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <b class="card-title">{{cat.title}}</b>
+          <p class="card-text">{{cat.content | safe | truncatechars:40}}</p>
+          <a href="/category/{{cat.pk}}" class="btn btn-primary btn-center">View</a>
+        </div>
       </div>
+
+      {% endfor %}
     </div>
 
-    {% endfor %}
-    </div>
-    
   </div>
 </div>
 {% endblock body %}

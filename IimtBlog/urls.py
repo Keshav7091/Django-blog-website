@@ -29,6 +29,7 @@ urlpatterns = [
     path('AllBlog/', views.AllBlog, name='AllBlog'),
     path('all_blogs/<int:pk>/', views.all_blogs, name='all_blogs'),
     path('category/<int:pk>', views.category),
+    path('search/', views.search),
     
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

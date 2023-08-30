@@ -15,8 +15,8 @@
     <img src="{% static 'images/pic1.jpg' %}" style="height: 500px" class=" w-100" alt="...">
     <div class="carousel-caption ">
       <h3>Welcome To IBlog</h3>
-      <form class="my-3" role="search">
-        <input class="form-control me-3 w-75" style="position: relative; left: 110px;" type="search" placeholder="Search Blogs" aria-label="Search">
+      <form method="get" action="/search" class="my-3" role="search">
+        <input class="form-control me-3 w-75" style="position: relative; left: 110px;" type="search" placeholder="Search Blogs" aria-label="Search" name="query" id="search">
         <button class="btn btn-outline-success  my-3" type="submit">Search</button>
       </form>
     </div>

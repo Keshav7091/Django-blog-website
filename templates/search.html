@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}search Results: {{query}}{% endblock title %}
+
+{% block body %}
+
+<div class="container con-card2" style="margin: 90px;">
+
+    {% if allblogs|length < 1 %} <div class="container">
+
+        About 0 results (0.15 seconds) <br>
+        Your search - {{query}} - did not match any documents. <br>
+        Suggestions: <br>
+        <ul>
+            <li>Make sure that all words are spelled correctly.</li>
+            <li>Try different keywords.</li>
+            <li>Try more general keywords.</li>
+            <li>Try fewer keywords.</li>
+        </ul>
+
+</div>
+
+{% endif %}
+
+
+<div class="row row-cols-1 row-cols-md-3 g-4 px-2 my-3">
+    {% for obj in allblogs %}
+    <div class="card mb-3" style="max-width: 360px; margin-right: 10px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="/media/{{obj.image}}" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{obj.title}}</h5>
+                    <p class="card-text">{{obj.content | safe | truncatechars:150 }}</p>
+                    <p class="card-text">Author: {{obj.author}}</p>
+                    <p class="card-text"><small class="text-body-secondary">Posted Date: {{obj.posted_date}}</small></p>
+                    <a href="{% url 'all_blogs' obj.pk %}" class="btn btn-primary btn-sm">Read More...</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+</div>
+</div>
+
+{% endblock body %}

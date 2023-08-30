@@ -1,52 +1,52 @@
 {% extends 'base.html' %}
 
-{% block title %}All Blogs{% endblock title %} 
+{% block title %}All Blogs{% endblock title %}
 
 {% load static %}
 {% block body %}
 <link rel="stylesheet" href="{% static 'css/base.css' %}">
 
 <style>
-  .owl-item{
+  .owl-item {
     display: flex;
     justify-content: center;
   }
 
-  .item{
+  .item {
     width: 15rem;
     height: 23rem;
-}
+  }
 
 
 
 
-  .owl-nav{
+  .owl-nav {
     display: flex;
     justify-content: center;
   }
-  
-  .owl-prev{
+
+  .owl-prev {
     margin: 23px;
   }
-  .owl-prev span{
-      font-size: 30px;
+
+  .owl-prev span {
+    font-size: 30px;
   }
-  .owl-next{
+
+  .owl-next {
     margin: 23px;
   }
-  .owl-next span{
-      font-size: 30px;
+
+  .owl-next span {
+    font-size: 30px;
   }
-
-
-
 </style>
 
 <div class="container cont-card" style="margin: 90px;">
 
   <div class="owl-carousel">
     {% for cat in cats %}
-  
+
 
     <div class="card item">
       <img src="/media/{{cat.image}}" class="card-img-top" alt="...">
@@ -59,39 +59,37 @@
 
     {% endfor %}
   </div>
-  
+
 </div>
 
 
 <div class="container con-card2" style="margin: 90px;">
-    <h1 class="text-center">Read Out All Blogs</h1>
-    
-    <div class="row row-cols-1 row-cols-md-3 g-4 px-2 my-3">
-      {% for obj in regularBLOGS %}
-      <div class="card mb-3" style="max-width: 360px; margin-right: 10px;">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img src="/media/{{obj.image}}" class="img-fluid rounded-start" alt="...">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">{{obj.title}}</h5>
-              <p class="card-text">{{obj.content | safe | truncatechars:150 }}</p>
-              <p class="card-text">Author: {{obj.author}}</p>
-              <p class="card-text"><small class="text-body-secondary">Posted Date: {{obj.posted_date}}</small></p>
-              <a href="{% url 'all_blogs' obj.pk %}" class="btn btn-primary btn-sm">Read More...</a>
-            </div>
+  <h1 class="text-center">Read Out All Blogs</h1>
+
+  <div class="row row-cols-1 row-cols-md-3 g-4 px-2 my-3">
+    {% for obj in regularBLOGS %}
+    <div class="card mb-3" style="max-width: 360px; margin-right: 10px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="/media/{{obj.image}}" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{obj.title}}</h5>
+            <p class="card-text">{{obj.content | safe | truncatechars:150 }}</p>
+            <p class="card-text">Author: {{obj.author}}</p>
+            <p class="card-text"><small class="text-body-secondary">Posted Date: {{obj.posted_date}}</small></p>
+            <a href="{% url 'all_blogs' obj.pk %}" class="btn btn-primary btn-sm">Read More...</a>
           </div>
         </div>
       </div>
-  
-      {% endfor %}
     </div>
-  </div>
 
-  
-  
+    {% endfor %}
+  </div>
+</div>
+
+
+
 
 {% endblock body %}
-
-

@@ -1,25 +1,25 @@
 {% extends 'base.html' %}
 
-{% block title %}View Blog{% endblock title %} 
+{% block title %}View Blog{% endblock title %}
 
 {% block body %}
 
 {% load static %}
 
 <div class="card mb-3" style="max-width: 80%;">
-    <div class="row g-0" style="margin: 50px;">
-      <div class="col-md-6">
-        <img src="/media/{{viewBlog.image}}" class="img-fluid rounded-start" alt="...">
-      </div>
-      <div class="col-sm-6">
-        <div class="card-body"> 
-          <h5 class="card-title">{{viewBlog.title}}</h5>
-          <h6 class="text-warning">Author: {{viewBlog.author}}</h6>
-          <p class="card-text">{{viewBlog.content | safe}}</p>
-          <p class="card-text"><small class="text-muted">Posted Date: {{viewBlog.create_at}}</small></p>
-          <a href="{% url 'home' %}" class="btn btn-primary btn-sm">Home</a>
-        </div>
+  <div class="row g-0" style="margin: 50px;">
+    <div class="col-md-6">
+      <img src="/media/{{viewBlog.image}}" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-sm-6">
+      <div class="card-body">
+        <h5 class="card-title">{{viewBlog.title}}</h5>
+        <h6 class="text-warning">Author: {{viewBlog.author}}</h6>
+        <p class="card-text">{{viewBlog.content | safe}}</p>
+        <p class="card-text"><small class="text-muted">Posted Date: {{viewBlog.create_at}}</small></p>
       </div>
     </div>
   </div>
+  
+</div>
 {% endblock body %}

@@ -72,4 +72,15 @@ def category(request, pk):
 
 
 def search(request):
-    return render(request, 'search.html')
+    query = request.GET['query']
+    if len(query) >80:
+        allblogs= Regular_Blog.objects.none()
+
+    else:
+        allblogstitle = Regular_Blog.objects.filter(title__icontains = query)
+        allblogscontent = Regular_Blog.objects.filter(content__icontains = query)
+        
+        allblogs = allblogstitle.union(allblogscontent)
+
+    params = {'allblogs': allblogs, 'query':query}
+    return render(request, 'search.html', params)
