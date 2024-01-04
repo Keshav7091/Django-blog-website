@@ -6,4 +6,4 @@ python manage.py migrate --noinput
 
 echo "Collect Static..."
 pip install -r requirements.txt 
-python3.11 manage.py collectstatic --noinput --clear
+python manage.py collectstatic --noinput --clear
