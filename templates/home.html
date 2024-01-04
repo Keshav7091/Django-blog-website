@@ -9,15 +9,21 @@
   .carousel-inner {
     height: 80vh;
   }
+  .form-control{
+    background-color: #00000061;
+  }
+  .form-control::placeholder{
+    color: rgb(10, 168, 165);
+  }
 </style>
 <div class="carousel-inner">
   <div class="carousel-item active">
-    <img src="{% static 'images/pic1.jpg' %}" style="height: 500px" class=" w-100" alt="...">
+    <img src="{% static 'images/blog.jpeg' %}" style="height: 500px" class=" w-100" alt="...">
     <div class="carousel-caption ">
-      <h3>Welcome To IBlog</h3>
+      <h3 style=" color: #3b03e7;">Welcome To IBlog</h3>
       <form method="get" action="/search" class="my-3" role="search">
-        <input class="form-control me-3 w-75" style="position: relative; left: 110px;" type="search" placeholder="Search Blogs" aria-label="Search" name="query" id="search">
-        <button class="btn btn-outline-success  my-3" type="submit">Search</button>
+        <input class="form-control me-3 w-75" style="position: relative; left: 110px; color: black;" type="search" placeholder="Search Blogs" aria-label="Search" name="query" id="search">
+        <button class="btn btn-success  my-3" type="submit">Search</button>
       </form>
     </div>
   </div>
@@ -25,17 +31,8 @@
 </div>
 
 
-
-
-
-
-
-
-
-
 <div class="container">
   <h1 class="text-center">Read out popular blogs</h1>
-  <h4 class="text-center my-4">Hello {{name}}</h4>
   <div class="row row-cols-1 row-cols-md-3 g-4 px-2 my-4">
     {% for obj in poplarBLOGS %}
     <div class="card mb-3" style="max-width: 540px">
